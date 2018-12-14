@@ -1,4 +1,4 @@
-export const average = arr => arr.reduce(
+const average = arr => arr.reduce(
     (r, e, i, arr) => r + (e / arr.length),
     0
   )
@@ -6,7 +6,7 @@ export const average = arr => arr.reduce(
   if (average([]) !== 0) throw Error('Average not works!')
   if (average([1, 2, 3, 4]) !== 2.5) throw Error('Average not works!')
   
-  export const median = arr => {
+  const median = arr => {
     const length = arr.length
     const sorted = arr.sort()
   
@@ -24,7 +24,7 @@ export const average = arr => arr.reduce(
   if (median([1, 2, 3]) !== 2) throw Error('Median not works!')
   if (median([]) !== 0) throw Error('Median not works!')
   
-  export const min = arr => {
+  const min = arr => {
     if (arr.length === 0) return 0
   
     return Math.min.apply(null, arr)
@@ -34,7 +34,7 @@ export const average = arr => arr.reduce(
   if (min([-1, 1, -3]) !== -3) throw Error('Min not works!')
   if (min([]) !== 0) throw Error('Min not works!')
   
-  export const max = arr => {
+  const max = arr => {
     if (arr.length === 0) return 0
   
     return Math.max(...arr)

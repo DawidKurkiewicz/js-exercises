@@ -1,63 +1,66 @@
 
 import { getStats, getValueFromInput } from './logic.js'
 
-export default function App(selector) {
-  this.container = document.querySelector(selector || 'body')
-  this.inputElement = null
-  this.buttonElement = null
-  this.paragraphElement = null
+export default class App {
+    constructor(selector) {
+        this.container = document.querySelector(selector || 'body')
+        this.inputElement = null
+        this.buttonElement = null
+        this.paragraphElement = null
 
-  this.resultText = ''
+        this.resultText = ''
 
-  this.init()
-}
+        this.init()
+    }
 
-App.prototype.init = function () {
-  this.render()
-}
+    init() {
+        this.render()
+    }
 
-App.prototype.render = function () {
-  this.container.innerHTML = ''
-  
-  this.inputElement = document.createElement('input')
-  this.buttonElement = document.createElement('button')
-  this.paragraphElement = document.createElement('p')
+    render() {
+        this.container.innerHTML = ''
 
-  this.inputElement.classList.add('input')
-  this.buttonElement.classList.add('button')
-  this.paragraphElement.classList.add('result')
+        this.inputElement = document.createElement('input')
+        this.buttonElement = document.createElement('button')
+        this.paragraphElement = document.createElement('p')
 
-  this.buttonElement.innerText = 'Click'
+        this.inputElement.classList.add('input')
+        this.buttonElement.classList.add('button')
+        this.paragraphElement.classList.add('result')
 
-  this.paragraphElement.innerHTML = this.resultText
+        this.buttonElement.innerText = 'Click'
 
-  this.addEventsListeners()
+        this.paragraphElement.innerHTML = this.resultText
 
-  this.container.appendChild(this.inputElement)
-  this.container.appendChild(this.buttonElement)
-  this.container.appendChild(this.paragraphElement)
-}
+        this.addEventsListeners()
 
-App.prototype.buttonClickHandler = function () {
-  const stats = getStats(
-    getValueFromInput(
-      this.inputElement
-    )
-  )
+        this.container.appendChild(this.inputElement)
+        this.container.appendChild(this.buttonElement)
+        this.container.appendChild(this.paragraphElement)
+    }
 
-  this.resultText = `
+    buttonClickHandler() {
+        const stats = getStats(
+            getValueFromInput(
+                this.inputElement
+            )
+        )
+
+
+        this.resultText = `
         <p>MIN: ${stats.min}</p>
         <p>MAX: ${stats.max}</p>
         <p>AVG: ${stats.avg}</p>
         <p>MED: ${stats.median}</p>
     `
 
-  this.render()
-}
+        this.render()
+    }
 
-App.prototype.addEventsListeners = function () {
-  this.buttonElement.addEventListener(
-    'click',
-    this.buttonClickHandler.bind(this)
-  )
+    addEventsListeners() {
+        this.buttonElement.addEventListener(
+            'click',
+            this.buttonClickHandler.bind(this)
+        )
+    }
 }
