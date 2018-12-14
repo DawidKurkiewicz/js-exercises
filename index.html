@@ -7,15 +7,17 @@
     <title>Document</title>
 </head>
 <body>
+<div class = "app-1"></div>
+<div class = "app-2"></div>
 
-    <input class = "input" type = "text" />
-    <button class = "button" >
-        Click
-    </button>
+<script type ="module">
+    
+import App from './script.js'
+const app1 = new App('.app-1')
+const app2 = new App('.app-2')
 
-    <p class = "results" >
-        
-    </p>
-        <script src="./script.js"></script>
+
+</script>
+
 </body>
 </html>
