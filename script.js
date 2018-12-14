@@ -1,10 +1,16 @@
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+function median(values) {
 
-const calcAve = (arrayOfNumbers) => {
-   return arrayOfNumbers.reduce((reduced, element, index, array) => {
-        const sum = reduced + element / array.length
-        return sum
-    }, 0)
+    values.sort( function(a,b) {return a - b;} );
+
+    var half = Math.floor(values.length/2);
+
+    if(values.length % 2)
+        return values[half];
+    else
+        return (values[half-1] + values[half]) / 2.0;
 }
 
-console.log(calcAve(numbers))
+var list1 = [3, 8, 9, 1, 5, 7, 9, 21];
+median(list1);
+
+console.log(median(list1))
